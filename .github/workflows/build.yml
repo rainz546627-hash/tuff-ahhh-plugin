@@ -23,12 +23,13 @@ jobs:
           cache: maven
 
       - name: Build plugin JAR
+        working-directory: InfamySMP-One-Source-GitHub
         run: mvn --batch-mode --no-transfer-progress clean package
 
       - name: Save the Paper plugin
         uses: actions/upload-artifact@v4
         with:
           name: InfamySMP-Paper-1.21.11
-          path: target/InfamySMP.jar
+          path: InfamySMP-One-Source-GitHub/target/InfamySMP.jar
           if-no-files-found: error
           retention-days: 30
