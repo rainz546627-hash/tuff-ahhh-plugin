@@ -23,13 +23,12 @@ jobs:
           cache: maven
 
       - name: Build plugin jar
-        run: mvn --batch-mode --no-transfer-progress clean package
+        run: mvn --batch-mode --no-transfer-progress -f InfamySMP-GitHub-Upload/pom.xml clean package
 
       - name: Publish installable plugin
         uses: actions/upload-artifact@v4
         with:
           name: InfamySMP-Paper-1.21.11
-          path: target/InfamySMP.jar
+          path: InfamySMP-GitHub-Upload/target/InfamySMP.jar
           if-no-files-found: error
           retention-days: 30
-        
