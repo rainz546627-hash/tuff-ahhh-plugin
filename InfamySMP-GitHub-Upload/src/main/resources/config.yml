@@ -1,0 +1,7 @@
+leaderboard-size: 10
+milestone-announcements: true
+effects:
+  feared-at: 5
+  notorious-at: 8
+  legend-at: 10
+players: {}
