@@ -288,7 +288,7 @@ public final class InfamyPlugin extends JavaPlugin implements Listener {
         );
     }
 
-    private boolean onCommand(org.bukkit.command.CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
+    public boolean onCommand(org.bukkit.command.CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if (args.length == 0) {
             if (!(sender instanceof Player player)) {
                 sender.sendMessage("Use /infamy <player> or /infamy leaderboard from the console.");
