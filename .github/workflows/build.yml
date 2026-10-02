@@ -1,0 +1,33 @@
+name: Build Paper plugin
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v5
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build plugin JAR
+        run: mvn --batch-mode --no-transfer-progress clean package
+
+      - name: Upload Paper plugin JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: InfamySMP-Paper
+          path: target/InfamySMP.jar
+          if-no-files-found: error
