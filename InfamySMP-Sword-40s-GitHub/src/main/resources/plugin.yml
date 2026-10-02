@@ -1,0 +1,17 @@
+name: InfamySMP
+version: 1.0.0
+main: dev.infamy.smp.InfamyPlugin
+api-version: '1.21'
+description: Infamy PvP progression, shards, and custom unbreakable weapons.
+commands:
+  infamy:
+    description: View and manage Infamy.
+    usage: /infamy [player|gui|leaderboard|withdraw <amount>|weapons [player]|set <player> <score>|reset <player>]
+    aliases: [infamies]
+permissions:
+  infamy.use:
+    description: Withdraw positive Infamy as a shard.
+    default: true
+  infamy.admin:
+    description: Manage scores and give custom weapons.
+    default: op
