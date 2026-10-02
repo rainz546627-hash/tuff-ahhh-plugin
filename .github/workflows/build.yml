@@ -22,12 +22,24 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Find Maven project
+        id: project
+        shell: bash
+        run: |
+          POM="$(find . -type f -name pom.xml -not -path '*/target/*' -print -quit)"
+          if [ -z "$POM" ]; then
+            echo "::error::No pom.xml found. Upload the plugin project files to this repository."
+            exit 1
+          fi
+          echo "pom=$POM" >> "$GITHUB_OUTPUT"
+          echo "jar=$(dirname "$POM")/target/InfamySMP.jar" >> "$GITHUB_OUTPUT"
+
       - name: Build plugin JAR
-        run: mvn --batch-mode --no-transfer-progress clean package
+        run: mvn --batch-mode --no-transfer-progress -f "${{ steps.project.outputs.pom }}" clean package
 
       - name: Upload Paper plugin JAR
         uses: actions/upload-artifact@v4
         with:
           name: InfamySMP-Paper
-          path: target/InfamySMP.jar
+          path: ${{ steps.project.outputs.jar }}
           if-no-files-found: error
