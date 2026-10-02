@@ -1,0 +1,12 @@
+START HERE — CLEAN REPLACEMENT
+
+This ZIP contains the complete InfamySMP source project. It is not the finished .jar.
+
+To replace the old plugin code in your GitHub repository:
+1. Extract this ZIP on your computer.
+2. In GitHub, remove the old plugin source files and old workflow files that are no longer needed. You may keep LICENSE if you want.
+3. Upload the extracted contents so pom.xml, src, and .github are directly at the top level of the repository.
+4. Commit the upload. Open Actions and run “Build Paper plugin”.
+5. Download the InfamySMP-Paper artifact from the successful run. Extract InfamySMP.jar and place it in your server's plugins folder.
+
+Do not upload the ZIP file itself into the repository. Upload the files and folders inside it.
